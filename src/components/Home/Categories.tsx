@@ -5,7 +5,7 @@ import Link from "next/link";
 export const Categories = () => {
   const categories = [
     {title:"beauty", image:AppAssests.beauty},
-    {title:"fragrance" , image:AppAssests.frag}, 
+    {title:"fragrances" , image:AppAssests.frag}, 
     {title:"furniture",image:AppAssests.furniture},
     {title:"groceries",image:AppAssests.grocery},
     {title:"home-decoration",image:AppAssests.homedeco},

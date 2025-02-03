@@ -12,11 +12,13 @@ import { FaChevronDown } from "react-icons/fa";
 import { FaChevronUp } from "react-icons/fa";
 
 export default function NavBar() {
+
+
   const [Sidebar, setSidebar] = useState(false);
   const toggleSidebar = () => {
     setSidebar((prev) => !prev);
   };
-
+  
   const [category, setCategory] = useState(false);
   const toggleCategory = () => {
     setCategory((prev) => !prev);
@@ -128,18 +130,16 @@ export default function NavBar() {
           </button>
         </div>
       </div>
-{/*       
-              Sidebar */}
-          <div className={`flex flex-col sm:hidden rounded-l-lg  transition-all duration-700 right-0  text-white  ${Sidebar?"animate-movemenu":"animate-movemenu2"} fixed    h-[50%] z-50 font-geist max-w-[42%]   bg-black  bg-opacity-90   justify-start items-center flex-wrap `}>
+<div className={`flex flex-col sm:hidden rounded-l-lg  transition-all duration-700 right-0  border border-r-0 border-teal-700 text-black  ${Sidebar?"animate-movemenu":"animate-movemenu2 "} fixed   h-[50%] z-50 font-geist max-w-[42%] bg-slate-100    justify-start items-center flex-wrap `}>
           <div className=" p-2   flex  justify-end  w-full  bg-teal-700 ">
-   
+    
    <button
      onClick={toggleSidebar}
      className="text-white  hover:bg-teal-500 bg-teal-500 r p-1 rounded-sm transition mr-2 duration-300">
      <FaBars />
    </button>
  </div>
-            
+ 
              <button onClick={toggleCategory} className="hover:bg-teal-500    hover:bg-opacity-50 hover:rounded-md    p-2 m-2 ">
               <div    className="flex flex-row gap-1 justify-center items-center">
                 <span >Categories</span>
@@ -147,7 +147,7 @@ export default function NavBar() {
               </div>
             </button>
             {category && (
-              <div   className="absolute z-10  duration-700 text-black rounded-xl flex flex-wrap w-36 bg-opacity-70 sm:hidden justify-center flex-row p-1 sm:p-2 right-1 mt-24 bg-slate-200 border gap-2">
+              <div   className="absolute z-10  duration-700 text-black rounded-xl flex flex-wrap w-36 bg-opacity-70 sm:hidden justify-center flex-row p-1 sm:p-2 right-1 mt-24 bg-teal-700 border gap-2">
                 <CategoryItem   cdata={cdata} />
               </div>
             )}
@@ -177,6 +177,7 @@ export default function NavBar() {
               </button>
             </div>
           </div>
+          
         
       
     </>
