@@ -29,7 +29,7 @@ export const HomePage = () => {
         </div>
     <hr className=" bg-teal-600  mt-1 bg-opacity-60 h-0.5" />
 
-    <div className=' mt-3  p-2 flex flex-row overflow-x-scroll   scrollbar-hide justify-between gap-5'>
+    <div className=' mt-2 flex flex-row overflow-x-scroll   scrollbar-hide justify-start gap-5'>
     <Products category={"laptops"}/>
     
     </div>
@@ -44,7 +44,7 @@ export const HomePage = () => {
         </div>
    <hr className=" bg-teal-600  mt-1 bg-opacity-60 h-0.5" />
 
-    <div className=' mt-3  p-2 flex flex-row overflow-x-scroll  scrollbar-hide justify-between gap-5'>
+    <div className=' mt-2   flex flex-row overflow-x-scroll  scrollbar-hide start gap-5'>
     <Products category={"groceries"}/>
     
     
@@ -61,7 +61,7 @@ export const HomePage = () => {
         </div>
    <hr className=" bg-teal-600  mt-1 bg-opacity-60 h-0.5" />
 
-    <div className=' mt-3  p-2 flex flex-row overflow-x-scroll  scrollbar-hide justify-between gap-5'>
+    <div className=' mt-2   flex flex-row overflow-x-scroll  scrollbar-hide justify-start gap-5'>
     <Products category={"motorcycle"}/>
     
     

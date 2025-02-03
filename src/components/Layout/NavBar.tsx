@@ -66,12 +66,12 @@ export default function NavBar() {
   return (
     <>
        <div
-        className={`bg-white z-10  shadow-lg lg:pr-8 w-full fixed mx-auto font-geist lg:font-bold h-[7%] md:h-[6%] lg:h-[10%] flex justify-evenly lg:gap-10 sm:gap-3 md:gap-2 ${isScrolled ? '  animate-movenav  ' : '  '}`}
+        className={`bg-white z-10  shadow-lg lg:pr-8 w-full fixed mx-auto font-geist lg:font-bold h-[8%] md:h-[6%] lg:h-[10%] flex justify-evenly lg:gap-10 sm:gap-3 md:gap-2 ${isScrolled ? '  animate-movenav  ' : '  '}`}
       >
-        <div className="lg:w-[20%]  h-[70%] mt-2 w-[30%] gap-1 flex flex-row justify-center">
+        <div className="lg:w-[20%]  h-[70%] mt-2 w-[33%] md:w-[30%] gap-1 flex flex-row justify-center">
           <Image src={AppAssests.logo} alt="logo" className="overflow-hidden md:ml-2  h-full  w-[30%] sm:w-[22%] md:w-[28%] lg:w-[20%] " />
           <Link href={"/"}>
-            <div className="flex font-exo_2  text-lg lg:text-3xl mt-1 md:mt-2 md:text-2xl font-bold text-teal-500 opacity-90"> Shopcart</div>
+            <div className="flex font-exo_2  text-xl lg:text-3xl mt-2 md:mt-2 md:text-2xl font-bold text-teal-500 opacity-90"> Shopcart</div>
           </Link>
         </div>
         <div className="sm:flex flex-row items-center justify-center gap-2 md:gap-6 outline-none hidden">
@@ -107,7 +107,7 @@ export default function NavBar() {
           </form>
           <IoSearchOutline className="absolute  right-[5%] lg:right-[8%] text-white   h-5 p-1 w-5 rounded-xl bg-teal-500    shadow-lg" />
         </div>
-        <div className="sm:flex flex-row p-2 justify-center items-center gap-4 hidden">
+        <div className="sm:flex flex-row p-1 justify-center items-center gap-2 hidden">
           <Link href={"/account"}>
             <div className="flex flex-row gap-1 justify-center items-center">
               <VscAccount className="size-5" />
@@ -128,8 +128,9 @@ export default function NavBar() {
           </button>
         </div>
       </div>
-      
-          <div className={`flex flex-col sm:hidden rounded-l-lg  transition-all duration-700 right-0  text-white  ${Sidebar?"animate-movemenu":"hidden"} fixed    h-[50%] z-50 font-geist max-w-[42%]   bg-black  bg-opacity-90   justify-start items-center flex-wrap `}>
+{/*       
+              Sidebar */}
+          <div className={`flex flex-col sm:hidden rounded-l-lg  transition-all duration-700 right-0  text-white  ${Sidebar?"animate-movemenu":"animate-movemenu2"} fixed    h-[50%] z-50 font-geist max-w-[42%]   bg-black  bg-opacity-90   justify-start items-center flex-wrap `}>
           <div className=" p-2   flex  justify-end  w-full  bg-teal-700 ">
    
    <button

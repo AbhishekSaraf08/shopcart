@@ -42,10 +42,17 @@ export default {
               '100%': { transform: 'translateY(0px)' }, 
         
           
-        }
+        },
+        movemenu2:{
+          '100%': { transform: 'translateX(150px)' },  
+            '0%': { transform: 'translateX(0px)' }, 
+      
+        
+      },
     },
     animation:{
       movemenu: 'movemenu 1s ease-in-out forwards',
+      movemenu2: 'movemenu2 1s ease-in-out forwards',
       moveRight: 'moveRight 1s ease-in-out infinite',
       movenav: 'movenav 0.9s ease-in-out forwards',
     }

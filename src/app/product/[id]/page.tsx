@@ -1,6 +1,7 @@
 'use client'; 
 import React, { useState, useEffect } from 'react';
 import { FcRating } from "react-icons/fc";
+import Image from 'next/image';
 interface Product {
   id: number;
   title: string;
@@ -57,11 +58,15 @@ const ProductDetail = ({ params }:any) => {
     <div className="max-w-7xl  mt-20   mx-auto  p-6">
       <div className="flex flex-col md:flex-row gap-6">
       
-        <div className="md:w-1/2 flex justify-center">
-          <img
+        <div className="md:w-1/2 flex justify-center ">
+          <Image
             src={product.images[0]}
             alt={product.title}
-            className=" max-h-[60%] max-w-full rounded-lg shadow-lg"
+            priority={true}
+            fetchPriority="high"
+            width={400}
+            height={300}
+            className="  max-h-[80%] rounded-lg shadow-lg"
           />
         </div>
 

@@ -26,17 +26,17 @@ export const Brands = () => {
           Choose By Brand 
         </h1>
        {/* <hr className=" bg-teal-600  bg-opacity-60 h-1" /> */}
-        <div className="flex  scroll-smooth s flex-row  lg:flex-nowrap   scrollbar-hide  justify-evenly overflow-x-scroll   gap-3   h-full ">
+        <div className="flex  scroll-smooth  flex-row  lg:flex-nowrap   scrollbar-hide   overflow-x-scroll   gap-1   h-full ">
           {brands.map((value: any, index: any) => (
-            <div className=" w-[48%] sm:w-[30%]  cursor-pointer h-[40%]  lg:h-full lg:w-[16%] " key={index}>
+            <div className=" w-[48%] sm:w-[30%]  cursor-pointer h-[40%]   lg:h-full lg:w-[16%] " key={index}>
               <div
                 key={index}
-                className="  hover:scale-95  hover:bg-slate-300 duration-300  rounded-xl px-2  py-2   flex  flex-row   justify-evenly  gap-2 lg:gap-4  items-center  h-full md:h-16 md:w-16  min-w-32  lg:h-full lg:w-full bg-slate-300 bg-opacity-50  "
+                className="  hover:scale-95  hover:bg-slate-300 duration-300  rounded-xl px-1  py-1   flex  flex-row   justify-evenly  gap-2  items-center  min-h-full md:h-12 md:w-30  min--w-20  lg:h-full lg:w-full bg-slate-300 bg-opacity-50  "
               >
-               <div className=" transition-all duration-700 h-full  max-w-12 max-h-11 md:max-w-16 md:max-h-14 lg:min-w-12 lg:max-w-16 lg:h-[90%]  rounded-full  bg-white">
-                    <Image src={value.image} alt={value.title}   className=" md:min-w-6  h-full    rounded-full   "/>
+               <div className=" transition-all duration-700 h-full  max-w-10 max-h-11 md:max-w-10 md:max-h-14  lg:max-w-10 lg:h-[90%]  rounded-full  bg-white">
+                    <Image src={value.image} alt={value.title}   className="   max-w-10 h-full    rounded-full   "/>
                 </div>
-                <h1 className=" text-xs md:text-lg lg:text-lg font-schibsted_grotesk  text-teal-600  font-bold">
+                <h1 className=" text-xs md:text-base font-geist  text-teal-600  font-bold">
                   {value.title.toUpperCase()}
                 </h1>
                 

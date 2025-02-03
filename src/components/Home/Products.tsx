@@ -53,7 +53,7 @@ const Products = (category: IProducts) => {
         (
             <div
               key={item.id}
-              className="   max-w-40   md:max-w-48  max-h-[10%] rounded-lg     lg:h-[15%]  flex  justify-evenly flex-col "
+              className="   max-w-40   md:max-w-48  max-h-[10%] rounded-lg     lg:h-[15%]  flex  justify-between flex-col "
             >
               <Link href={`/product/${item.id}`} className="">
                 <div className="flex flex-col ">
