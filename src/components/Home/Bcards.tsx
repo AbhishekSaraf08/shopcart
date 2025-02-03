@@ -11,7 +11,7 @@ const Bcards = () => {
  
    return (
  
-     <div className='flex flex-col p-3'>
+     <div className='flex flex-col p-3 mb-5'>
      <h1 className="w-full  text-xl md:text-2xl  font-exo_2 font-bold">
            Services To Help You Shop 
          </h1>
