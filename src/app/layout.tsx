@@ -47,14 +47,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       
-
+   
       <body
         className={` antialiased ${Geistfont.variable} ${Schibsted.variable} ${Libre.variable} ${Exo.variable}`}
       >
         <GloabalLayout>
         {children}
         </GloabalLayout>
+      
       </body>
+      
     </html>
   );
 }

@@ -66,7 +66,7 @@ export default function NavBar() {
   return (
     <>
        <div
-        className={`bg-white z-10  shadow-lg lg:pr-8 w-full fixed mx-auto font-geist lg:font-bold h-[8%] md:h-[6%] lg:h-[10%] flex justify-evenly lg:gap-10 sm:gap-3 md:gap-2 ${isScrolled ? '  animate-movenav  ' : '  '}`}
+        className={`bg-white z-10   shadow-lg lg:pr-8 w-full fixed mx-auto font-geist lg:font-bold h-[8%] md:h-[6%] lg:h-[10%] flex justify-evenly lg:gap-10 sm:gap-3 md:gap-2 ${isScrolled ? '  animate-movenav  ' : '  '}`}
       >
         <div className="lg:w-[20%]  h-[70%] mt-2 w-[33%] md:w-[30%] gap-1 flex flex-row justify-center">
           <Image src={AppAssests.logo} alt="logo" className="overflow-hidden md:ml-2  h-full  w-[30%] sm:w-[22%] md:w-[28%] lg:w-[20%] " />
