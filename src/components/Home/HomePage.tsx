@@ -15,7 +15,7 @@ interface IHomePage{
 
 export const HomePage = () => {
   return (
-    <div className="  scroll-smooth w-full md:w-[90%]  justify-center flex  mt-6 gap-6 overflow-hidden flex-col  ">
+    <div className="   scroll-smooth w-full md:w-[90%]  justify-center flex  mt-6 gap-6 overflow-hidden flex-col  ">
     <Banner/>
     <Categories/>
     <Brands/>
@@ -63,7 +63,6 @@ export const HomePage = () => {
 
     <div className=' mt-2   flex flex-row overflow-x-scroll  scrollbar-hide justify-start gap-5'>
     <Products category={"motorcycle"}/>
-    
     
     </div>
   

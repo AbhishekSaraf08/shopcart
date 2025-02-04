@@ -64,9 +64,9 @@ const ProductDetail = ({ params }:any) => {
             alt={product.title}
             priority={true}
             fetchPriority="high"
-            width={400}
+            width={300}
             height={300}
-            className="  max-h-[80%] rounded-lg shadow-lg"
+            className="  md:max-h-[80%] md:max-w-full rounded-lg shadow-lg"
           />
         </div>
 

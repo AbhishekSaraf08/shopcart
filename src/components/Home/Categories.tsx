@@ -19,7 +19,6 @@ export const Categories = () => {
               Top Categories
             </h1>
             {/* <hr className=" bg-teal-600  bg-opacity-60 h-1" /> */}
-    
             <div className="flex  flex-row  lg:flex-nowrap   flex-wrap    gap-1 md:gap-2      h-full ">
               {categories.map((value: any, index: any) => (
                 <div className=" w-[32.5%]  md:w-[24%] lg:w-[15%]   lg:min-h-full   " key={index}>

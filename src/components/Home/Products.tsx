@@ -4,26 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FcRating } from "react-icons/fc";
 import Image from "next/image";
+import useProducts from "../Common/useProducts";
 interface IProducts {
-  category: any;
+  category?: any;
 }
 const Products = (category: IProducts) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    fetch(`https://dummyjson.com/products/category/${category.category}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.products);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError("Error fetching data");
-        setLoading(false);
-      });
-  }, []);
+  
+  const { products, loading, error } = useProducts(category.category);
 
   if (loading) {
     return <div role="status">
