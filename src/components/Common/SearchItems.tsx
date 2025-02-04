@@ -29,12 +29,12 @@
     
      <div ref={searchRef} className="   absolute  max-h-96  top-11 rounded-b-md lg:top-14    w-full  overflow-y-scroll     bg-slate-200 text-black">
         {searchValue && filteredProducts.map(
-            (item: any) =>
+            (item: any,index) =>
             (
               //  <div
               //  key={item.id} className=' flex flex-row justify-start gap-4 duration-700 transform hover:scale-105 w-full ease-in-out object-cover'>
                 
-                <Link href={`/product/${item.id}`} onClick={()=>setIsSearch(false)}  className=" flex flex-row  gap-4   p-2 max-h-20 hover:shadow-xl duration-700 transform hover:scale-100  ease-in-out object-cover   ">
+                <Link  key={index} href={`/product/${item.id}`} onClick={()=>setIsSearch(false)}  className=" flex flex-row  gap-4   p-2 max-h-20 hover:shadow-xl duration-700 transform hover:scale-100  ease-in-out object-cover   ">
                     
                   <Image src={item.thumbnail} alt={item.title} height={50} width={50} className="  rounded-md " />
                  <h2 className="font-geist overflow-hidden t">{item.title}</h2>       
