@@ -9,7 +9,7 @@ const useProducts = (category?: string) => {
     setLoading(true);
     const url = category
       ? `https://dummyjson.com/products/category/${category}`
-      : `https://dummyjson.com/products?limit=100`;
+      : `https://dummyjson.com/products?limit=194`;
 
     fetch(url)
       .then((res) => res.json())
