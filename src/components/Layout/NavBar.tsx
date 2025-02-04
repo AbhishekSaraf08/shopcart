@@ -26,13 +26,13 @@ import SearchItems from "../Common/SearchItems";
     const [searchValue, setSearchValue] = useState("");
     
     const categoryRef = useRef(null);
-    const searchRef = useRef(null);
+    const searchRef = useRef<any>(null);
     useEffect(() => {
       const handleClickOutside = (event :any) => {
         if (categoryRef.current) {
           setCategory(false); 
         }
-        if(searchRef.current)
+        if(searchRef.current && !searchRef.current.contains(event.target))
         {
           setIsSearch(false);
         }
@@ -117,7 +117,7 @@ import SearchItems from "../Common/SearchItems";
             {isSearch && (
               
               
-              <SearchItems searchRef={searchRef}  searchValue={searchValue} />
+              <SearchItems searchRef={searchRef}  setIsSearch={setIsSearch} searchValue={searchValue} />
             
               
               )}
