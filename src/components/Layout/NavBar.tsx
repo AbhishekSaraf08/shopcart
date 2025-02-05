@@ -11,6 +11,8 @@
   import { FaChevronDown } from "react-icons/fa";
   import { FaChevronUp } from "react-icons/fa";
 import SearchItems from "../Common/SearchItems";
+import Products from "../Home/Products";
+import { useRouter } from "next/navigation";
 
   export default function NavBar() {
     const [Sidebar, setSidebar] = useState(false);
@@ -63,6 +65,7 @@ import SearchItems from "../Common/SearchItems";
     }, []);
 
     const [isSearch, setIsSearch] = useState(false);
+    const [searchButton,setSearchButton] = useState(false);
 
     let cdata = [
       { label: "Cloths", image: AppAssests.cloth, count: "20", status: "Available" },
@@ -70,7 +73,7 @@ import SearchItems from "../Common/SearchItems";
       { label: "Accessories", image: AppAssests.accessories, count: "10", status: "Available" },
       { label: "Stationery", image: AppAssests.stationery, count: "15", status: "Available" },
     ];
-
+const router=useRouter()
     return (
       <>
         <div
@@ -82,9 +85,9 @@ import SearchItems from "../Common/SearchItems";
               <div className="flex font-exo_2  text-xl lg:text-3xl mt-2 md:mt-2 md:text-2xl font-bold text-teal-500 opacity-90"> Shopcart</div>
             </Link>
           </div>
-          <div className="sm:flex flex-row items-center justify-center gap-2 md:gap-6 outline-none hidden">
+          <div className="sm:flex flex-row items-center justify-center gap-2 md:gap-3 lg:gap-6 outline-none hidden">
             <button onClick={toggleCategory}>
-              <div className={`flex flex-row gap-1 justify-center items-center p-2 ${category ? " h-12  bg-[#5aa] bg-contain   shadow-xl  rounded-t-xl " : ""}`}>
+              <div className={`flex flex-row gap-1 justify-center items-center lg:p-2 ${category ? " h-12  bg-[#5aa] bg-contain   shadow-xl  rounded-t-xl " : ""}`}>
                 <span>Categories </span>
                 <div className="transition-all duration-700">
                   {category ? <FaChevronUp  className="transition-all duration-700"/> : <FaChevronUp  className="transition-all  rotate-180 duration-700"/>}
@@ -110,18 +113,16 @@ import SearchItems from "../Common/SearchItems";
             </div>
           </div>
           <div className="flex justify-center  relative gap-2 lg:w-[30%]  h-full  items-center">
-            <form className="md:h-full  flex items-center w-full">
+            <form  onSubmit={(e)=>{ e.preventDefault();  setIsSearch(false); searchValue?router.push(`/search/${searchValue}`):""}}className="md:h-full  flex items-center w-full">
             <input type="text" onChange={(e)=>setSearchValue(e.target.value)} role="search" onClick={()=>setIsSearch(true)} placeholder="Search..." className="h-[30%]  text-xs md:text-sm font-light  p-1  lg:p-4  rounded-lg  lg:font-mono lg:h-[60%] sm:w-full sm:h-[40%]   bg-opacity-50 px-2 lg:py-1 sm:py-1 md:py-0 border  resize-none bg-slate-200  overflow-hidden outline-none"></input>
             </form>
-            <IoSearchOutline className="absolute  right-[5%] lg:right-[6%] text-white  cursor-pointer  h-5 p-1 w-5 lg:h-6 lg:w-6 rounded-full bg-teal-500    shadow-lg" />
+            <IoSearchOutline onClick={()=>{setSearchButton(true); 
+              searchValue?router.push(`/search/${searchValue}`):""
+            }} className="absolute right-[5%] lg:right-[6%] text-white  cursor-pointer  h-5 p-1 w-5 lg:h-6 lg:w-6 rounded-full bg-teal-500    shadow-lg" />
+            
             {isSearch && (
-              
-              
               <SearchItems searchRef={searchRef}  setIsSearch={setIsSearch} searchValue={searchValue} />
-            
-              
-              )}
-            
+              )}            
           </div>
           <div className="sm:flex flex-row p-1 justify-center items-center gap-2 hidden">
             <Link href={"/account"}>
@@ -144,13 +145,9 @@ import SearchItems from "../Common/SearchItems";
             </button>
           </div>
         </div>
-
-
-
           {/* Sidebar */}
   <div className={`flex flex-col sm:hidden rounded-l-lg  transition-all duration-700 right-0  border border-r-0 border-t-0 border-teal-700 text-black  ${Sidebar?"animate-movemenu":"animate-movemenu2 "} fixed   h-[50%] z-50 font-geist w-[37%] bg-slate-100    justify-start items-center  `}>
             <div className="  p-2 w-full    flex  justify-end   bg-[#5aa] ">
-      
     <button
       onClick={toggleSidebar}
       className="text-white  hover:bg-teal-500 bg-teal-600  p-1 rounded-sm transition mr-2 duration-300">

@@ -62,8 +62,7 @@ export const HomePage = () => {
    <hr className=" bg-teal-600  mt-1 bg-opacity-60 h-0.5" />
 
     <div className=' mt-2   flex flex-row overflow-x-scroll  scrollbar-hide justify-start gap-5'>
-    <Products category={"motorcycle"}/>
-    
+    <Products category={"motorcycle"}/>  
     </div>
   
    </div>

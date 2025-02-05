@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 
-const useProducts = (category?: string) => {
+const useProducts = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
     setLoading(true);
-    const url = category
-      ? `https://dummyjson.com/products/category/${category}`
-      : `https://dummyjson.com/products?limit=194`;
-
+    const url =
+       `https://dummyjson.com/products?limit=194`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -21,7 +19,7 @@ const useProducts = (category?: string) => {
         setError("Error fetching data");
         setLoading(false);
       });
-  }, [category]);
+  }, []);
 
   return { products, loading, error };
 };

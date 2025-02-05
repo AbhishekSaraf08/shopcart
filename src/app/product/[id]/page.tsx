@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { FcRating } from "react-icons/fc";
 import Image from 'next/image';
+import useProducts from '@/components/Common/useProducts';
 interface Product {
   id: number;
   title: string;
@@ -25,26 +26,31 @@ interface Params {
 
 const ProductDetail = ({ params }:any) => {
   
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  // const [product, setProduct] = useState<Product | null>(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState('');
   const {id}:Params = React.use(params);
+  const {products,error,loading} = useProducts();
 
-  useEffect(() => {
-    if (!id) return; 
+  const product = products.find((item: any) =>
+    item.id==id);
+     
+
+  // useEffect(() => {
+  //   if (!id) return; 
 
     
-    fetch(`https://dummyjson.com/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data); 
-        setLoading(false); 
-      })
-      .catch((error) => {
-        setError('Error fetching product details');
-        setLoading(false);
-      });
-  }, [id]);  
+  //   fetch(`https://dummyjson.com/products/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setProduct(data); 
+  //       setLoading(false); 
+  //     })
+  //     .catch((error) => {
+  //       setError('Error fetching product details');
+  //       setLoading(false);
+  //     });
+  // }, [id]);  
 
   if (loading) {return <div role="status" className='h-screen w-screen flex justify-center items-center'>
   <svg aria-hidden="true" className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-teal-500" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +72,7 @@ const ProductDetail = ({ params }:any) => {
             fetchPriority="high"
             width={300}
             height={300}
+            loading='eager'
             className="  md:max-h-[80%] md:max-w-full rounded-lg shadow-lg"
           />
         </div>

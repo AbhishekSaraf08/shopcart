@@ -1,9 +1,9 @@
 "use client";
 import Products from '@/components/Home/Products';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 interface Params {
-  category: string; 
+  category?: string; 
 }
 export default function page({params}:any) {
   const {category}:Params = React.use(params);
