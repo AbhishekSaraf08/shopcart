@@ -106,7 +106,7 @@ const router=useRouter()
               </div>
             )}
             <div>
-              <Link href={"/deals"}>Deals</Link>
+              <Link href={"/products"}>Products</Link>
             </div>
             <div>
               <Link href={"/delivery"}>Delivery</Link>
@@ -166,7 +166,7 @@ const router=useRouter()
                 </div>
               )}
               <button  onClick={toggleSidebar} className="hover:bg-teal-500  hover:rounded-md  hover:bg-opacity-50 p-2 m-2 w-[80%]">
-                <Link href={"/deals"}>Deals</Link>
+                <Link href={"/products"}>Products</Link>
               </button>
               <button  onClick={toggleSidebar} className="hover:bg-teal-500  hover:rounded-md   hover:bg-opacity-50 p-2 m-2 w-[80%] ">
                 <Link href={"/delivery"}>Delivery</Link>

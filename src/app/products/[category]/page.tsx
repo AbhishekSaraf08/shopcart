@@ -36,7 +36,7 @@ export default function page({params}:any) {
   //       return <div className="text-center text-xl text-red-500">No products available</div>;
   //     }
   return (
-      <div className="flex py-5 flex-wrap w-[90%] mt-10 lg:mt-14  justify-center items-start gap-5 ">
+    <div className=" mt-20  flex flex-wrap   justify-start md:justify-evenly lg:justify-start ml-10 md:ml-0  lg:ml-5 w-full   items-start  gap-5">
     <Products category={category}/>
     </div>
   )

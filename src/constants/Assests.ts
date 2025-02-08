@@ -32,5 +32,6 @@ export class AppAssests{
     static delivery=require(`../../public/delivery.png`)
     
 
+     static account = require(`../../public/account.png`)
     
 }

@@ -7,8 +7,9 @@ import useProducts from "../Common/useProducts";
 interface IProducts {
   category ?: any;
   searchValue?: any;
+  sortBy?:any
 }
-const Products = ({ category, searchValue }: IProducts) => {
+const Products = ({ category, searchValue ,sortBy }: IProducts) => {
   const { products, loading, error } = useProducts();
   let upproducts;
   if (searchValue) {
@@ -28,6 +29,18 @@ const Products = ({ category, searchValue }: IProducts) => {
  else{
   upproducts=products;
  }
+
+
+ if (sortBy === "title") {
+  upproducts.sort((a, b) => a.title.localeCompare(b.title)); // Sort by title A-Z
+} else if (sortBy === "rating") {
+  upproducts.sort((a, b) => b.rating - a.rating); // Sort by rating (high to low)
+} else if (sortBy === "price-low") {
+  upproducts.sort((a, b) => a.price - b.price); // Sort by price low to high
+} else if (sortBy === "price-high") {
+  upproducts.sort((a, b) => b.price - a.price); // Sort by price high to low
+}
+
 
   if (loading) {
     return (
@@ -68,7 +81,7 @@ const Products = ({ category, searchValue }: IProducts) => {
         // item.category === category.category &&
         <div
           key={item.id}
-          className="   max-w-40   md:max-w-48  max-h-[10%] rounded-lg     lg:h-[15%]  flex  justify-between flex-col "
+          className="   max-w-[42%]  md:max-w-48  max-h-[10%] rounded-lg     lg:h-[15%]  flex  justify-between flex-col "
         >
           <Link href={`/product/${item.id}`} className="">
             <div className="flex flex-col ">
@@ -87,7 +100,7 @@ const Products = ({ category, searchValue }: IProducts) => {
                 {item.title}
               </h2>
               <div className="flex justify-between">
-                <span> {item.category}</span>
+                <span className="text-nowrap overflow-hidden"> {item.category}</span>
                 <span className="flex flex-row text-yellow-600 gap-1 items-center">
                   {item.rating}
                   <FcRating />

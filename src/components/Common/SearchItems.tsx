@@ -26,7 +26,7 @@
         }
     return (
         
-     <div ref={searchRef} className=  "absolute  max-h-96 border border-teal-600 border-t-0  top-11 rounded-b-md lg:top-12    w-full  overflow-y-scroll scrollbar-hide overflow-x-hidden  p-2    bg-white text-black">
+     <div ref={searchRef} className=  "absolute  max-h-96   top-11 rounded-b-md lg:top-12    w-full  overflow-y-scroll scrollbar-hide overflow-x-hidden  p-2    bg-white text-black">
        <h1 className='text-lg font-geist'>Products</h1>
         { searchValue && filteredProducts.map(
             (item: any,index) =>
