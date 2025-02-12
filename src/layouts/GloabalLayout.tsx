@@ -9,7 +9,7 @@ export default function GloabalLayout({
     children: React.ReactNode;
   }>) {
   return (
-    <div className='flex flex-col   w-full overflow-x-hidden  justify-start  items-center'>
+    <div className='flex flex-col   w-full  overflow-x-hidden    items-center'>
         <NavBar/>
         {children}
         <Footer/>

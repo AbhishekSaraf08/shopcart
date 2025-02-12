@@ -8,27 +8,41 @@ interface IProducts {
   category ?: any;
   searchValue?: any;
   sortBy?:any
+  discount?:any
+  availability?:any
+ 
 }
-const Products = ({ category, searchValue ,sortBy }: IProducts) => {
+const Products = ({ category, searchValue ,sortBy  ,discount ,availability }: IProducts) => {
+ 
   const { products, loading, error } = useProducts();
-  let upproducts;
+  
+  let upproducts=products;
   if (searchValue) {
     upproducts = products.filter((item: any) =>
       item.title.toLowerCase().includes(searchValue.toLowerCase()));  
-    if(upproducts.length==0){
-      return(<div className="flex justify-center items-center  h-screen text-red-500 text-3xl"> No Products Available</div>)
-    }
  }
  else if(category){
   upproducts = products.filter((item: any) =>
     item.category.toLowerCase()===category);
-  if(upproducts.length==0){
-    return(<div className="flex justify-center items-center  h-screen text-red-500 text-3xl"> No Products Available</div>)
+ 
+ }
+
+if(discount){
+  if(discount=='50'){
+    upproducts = upproducts.filter((item: any) =>
+      item.discountPercentage>=discount);
   }
- }
- else{
-  upproducts=products;
- }
+  else{
+  upproducts = upproducts.filter((item: any) =>
+    item.discountPercentage>discount-10 && item.discountPercentage<=discount);
+}
+}
+
+if (availability?.length) {
+  upproducts = upproducts.filter((item: any) =>
+    availability.includes(item.availabilityStatus)
+  );
+}
 
 
  if (sortBy === "title") {
@@ -40,7 +54,7 @@ const Products = ({ category, searchValue ,sortBy }: IProducts) => {
 } else if (sortBy === "price-high") {
   upproducts.sort((a, b) => b.price - a.price); // Sort by price high to low
 }
-
+ 
 
   if (loading) {
     return (
@@ -67,14 +81,12 @@ const Products = ({ category, searchValue ,sortBy }: IProducts) => {
   if (error) {
     return <div className="text-center text-red-500">{error}</div>;
   }
-  if (products.length === 0) {
-    return (
-      <div className="text-center text-xl text-red-500">
-        No products available
-      </div>
-    );
-  }
-  // console.log("pro",products.category)
+     if(upproducts.length==0){
+     return(<div className="flex justify-center items-center w-full h-screen font-geist text-red-500 text-xl md:text-3xl"> No Products Available</div>)
+    }
+
+
+  
   return (
     <>
       {upproducts.map((item: any) => (
@@ -93,7 +105,7 @@ const Products = ({ category, searchValue ,sortBy }: IProducts) => {
                   width={200}
                   placeholder="blur"
                   blurDataURL={item.thumbnail}
-                  className="bg-slate-200   hover:shadow-xl duration-700 transform hover:scale-125  min-w-40  md:min-w-48 ease-in-out object-cover  lg:min-w-48 bg-opacity-50 rounded-md mix-blend-color-burn"
+                  className="bg-slate-200   hover:shadow-xl duration-700 transform hover:scale-125  min-w-30  md:min-w-48 ease-in-out object-cover  lg:min-w-48 bg-opacity-50 rounded-md mix-blend-color-burn"
                 />
               </div>
               <h2 className="font-geist overflow-hidden text-nowrap">

@@ -6,7 +6,7 @@ import { FaFacebookSquare,FaLinkedin,FaTwitter,FaInstagram } from "react-icons/f
 import Link from 'next/link'
 export const Footer = () => {
   return (
-    <div className='font-exo_2   w-screen h-full mt-20     text-white  shadow-lg bg-black bg-opacity-80 p-4'>
+    <div className='font-exo_2   w-screen h-full   mt-20    text-white  shadow-lg bg-black bg-opacity-80 p-4'>
     <div className='h-full w-full  p-2 flex md:justify-between md:flex-row flex-col gap-8'>
 <div className='flex  flex-col  sm:w-[25%] gap-5 md:justify-between'>
 <div className="   h-[30%] mt-1   gap-2 flex  flex-row items-center md:ml-5 ">
