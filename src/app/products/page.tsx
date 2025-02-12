@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Products from '@/components/Home/Products';
 const page = () => {
     let categories= ["all","beauty","fragrances","furniture","groceries","home-decoration","kitchen-accessories","laptops","mens-shirts","mens-shoes","mens-watches","mobile-accessories","motorcycle","skin-care","smartphones","sports-accessories","sunglasses","tablets","tops","vehicle","womens-bags","womens-dresses","womens-jewellery","womens-shoes","womens-watches"]
@@ -29,17 +29,15 @@ const page = () => {
     ];
  
     let availvalues=["In Stock" ,"Low Stock" , "Out of Stock"];
-
-      const [availability,setAvailability]=useState("");
   
       const [selectedAvailabilities, setSelectedAvailabilities] = useState<string[]>([]);
 
-      // Handle checkbox changes (select/unselect availability)
+      
       const handleAvailabilityChange = (value: string) => {
         setSelectedAvailabilities((prevSelected) =>
           prevSelected.includes(value)
-            ? prevSelected.filter((item) => item !== value) // Unselect
-            : [...prevSelected, value] // Select
+            ? prevSelected.filter((item) => item !== value) 
+            : [...prevSelected, value] 
         );
       };
       
