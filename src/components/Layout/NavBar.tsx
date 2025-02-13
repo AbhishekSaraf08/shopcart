@@ -146,45 +146,46 @@ const router=useRouter()
           </div>
         </div>
           {/* Sidebar */}
-  <div className={`flex flex-col sm:hidden rounded-l-lg  transition-all duration-700 right-0  border border-r-0 border-t-0 border-teal-700 text-black  ${Sidebar?"animate-movemenu":"animate-movemenu2 "} fixed   h-[50%] z-50 font-geist w-[37%] bg-slate-100    justify-start items-center  `}>
-            <div className="  p-2 w-full    flex  justify-end   bg-[#5aa] ">
+  <div className={`flex flex-col sm:hidden rounded-l-lg text-2xl transition-all  duration-100 right-0  border border-r-0 border-t-0 border-teal-700 text-black  ${Sidebar?"animate-movemenu ":"animate-movemenu2 "} fixed   h-screen z-50 font-geist w-[100%]  gap-5  bg-gradient-to-r from-teal-600 to-sky-700   justify-start items-center  `}>
+            <div className="  p-2 w-full    flex  justify-between  bg-slate-100 ">
+     <Image src={AppAssests.logo} alt="logo" className="w-[10%]  h-full"/>
     <button
       onClick={toggleSidebar}
-      className="text-white  hover:bg-teal-500 bg-teal-600  p-1 rounded-sm transition mr-2 duration-300">
+      className="text-white  hover:bg-teal-800 bg-gradient-to-r from-teal-500 to-sky-700  p-1 rounded-sm transition mr-2 duration-300">
       <FaBars />
     </button>
   </div>
-              <button onClick={toggleCategory} className="hover:bg-teal-600    hover:bg-opacity-50 hover:rounded-md    p-2 m-2 ">
+              <button onClick={toggleCategory} className="hover:bg-white w-[80%]    hover:bg-opacity-70 hover:rounded-md    p-2 m-2 ">
                 <div    className="flex flex-row gap-1 justify-center items-center">
                   <span >Categories</span>
                   {category ? <FaChevronDown  className="  -rotate-180 transition-all duration-700"/> : <FaChevronDown  className="transition-all  duration-700"/>}
                 </div>
               </button>
               {category && (
-                <div   className="absolute z-10  duration-700 text-black rounded-xl flex flex-wrap w-32 right-0.5 bg-opacity-70 sm:hidden justify-center flex-row p-1 sm:p-2  mt-24 bg-[#5aa] border gap-1">
+                <div   className="absolute z-10  duration-700 text-black rounded-xl flex flex-wrap w-[81%] right-9 bg-opacity-70 sm:hidden justify-center flex-row p-1 sm:p-2  top-32 bg-[#5aa] border gap-1">
                   <CategoryItem   cdata={cdata} />
                 </div>
               )}
-              <button  onClick={toggleSidebar} className="hover:bg-teal-500  hover:rounded-md  hover:bg-opacity-50 p-2 m-2 w-[80%]">
+              <button  onClick={toggleSidebar} className="hover:bg-white  hover:rounded-md  hover:bg-opacity-70 p-2 m-2 w-[80%]">
                 <Link href={"/products"}>Products</Link>
               </button>
-              <button  onClick={toggleSidebar} className="hover:bg-teal-500  hover:rounded-md   hover:bg-opacity-50 p-2 m-2 w-[80%] ">
+              <button  onClick={toggleSidebar} className="hover:bg-white  hover:rounded-md   hover:bg-opacity-70 p-2 m-2 w-[80%] ">
                 <Link href={"/delivery"}>Delivery</Link>
               </button>
 
-              <div className="flex flex-col ">
-                <button  onClick={toggleSidebar} className="hover:bg-teal-500   hover:bg-opacity-50 hover:rounded-md p-2  flex m-2 gap-1 justify-center items-center">
+              <div className="flex gap-5 flex-col w-[80%] ">
+                <button  onClick={toggleSidebar} className="hover:bg-white   hover:bg-opacity-70 hover:rounded-md p-2  flex m-2 gap-1   justify-center items-center">
                   <Link href={"/account"}>
                     <div className="flex flex-row gap-1 justify-center items-center">
-                      <VscAccount className="size-5" />
+                      <VscAccount className="size-7" />
                       Account
                     </div>
                   </Link>
                 </button>
-                <button  onClick={toggleSidebar} className="hover:bg-teal-500  hover:bg-opacity-50  hover:rounded-md  p-2 flex m-2 gap-1 justify-center items-center">
+                <button  onClick={toggleSidebar} className="hover:bg-white  hover:bg-opacity-70  hover:rounded-md  p-2 flex m-2 gap-1  justify-center items-center">
                   <Link href={"/cart"}>
-                    <div className="flex flex-row gap-1 justify-center items-center">
-                      <IoCartOutline className="size-5" />
+                    <div className="flex flex-row gap-1 justify-center  items-center">
+                      <IoCartOutline className="size-8" />
                       Cart
                     </div>
                   </Link>

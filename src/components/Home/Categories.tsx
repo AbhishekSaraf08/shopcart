@@ -22,7 +22,7 @@ export const Categories = () => {
             <div className="flex  flex-row  lg:flex-nowrap   flex-wrap    gap-1 md:gap-2      h-full ">
               {categories.map((value: any, index: any) => (
                 <div className=" w-[32.5%]  md:w-[24%] lg:w-[15%]   lg:min-h-full   " key={index}>
-                  <Link href={`/products/${value.title}`}
+                  <Link href={`/products/?category=${value.title}`}
                     key={index}
                     className="  hover:scale-95  hover:bg-slate-300 rounded-xl overflow-hidden    md:h-14 lg:h-14   duration-300  flex  flex-row    py-1   px-1    gap-1 md:gap-2   items-center  h-12   lg:min-h-full  bg-slate-300 bg-opacity-50  "
                   >

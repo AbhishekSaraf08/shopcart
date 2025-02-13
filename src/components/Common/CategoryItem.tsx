@@ -14,7 +14,7 @@ const CategoryItem = ({cdata}:ICategoryItem) => {
        { 
             cdata.map((value:any, index:any) =>(
                   
-            <div   key={index}  className="  rounded-lg   w-full  max-h-14 sm:max-h-16 sm:w-[49%]   lg:w-[48%] flex transition-all duration-350 hover:cursor-pointer hover:scale-105  bg-white hover:bg-slate-100">
+            <div   key={index}  className="  rounded-lg  w-[49%]    max-h-14 sm:max-h-16 sm:w-[49%]   lg:w-[48%] flex transition-all duration-350 hover:cursor-pointer hover:scale-105  bg-white hover:bg-slate-100">
 
 
               <div className=" h-12 w-12 sm:h-16  sm:w-16">

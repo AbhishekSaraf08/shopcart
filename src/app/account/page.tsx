@@ -29,6 +29,8 @@ const Account = () => {
       <div className="w-32 h-32 rounded-full overflow-hidden border-2 mb-3 border-gray-300">
               <Image
                 src={AppAssests.account}
+                width={200}
+                height={200}
                 alt="Profile" 
                 className="w-full h-full object-cover" 
               />

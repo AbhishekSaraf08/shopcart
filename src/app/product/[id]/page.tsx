@@ -96,15 +96,20 @@ const ProductDetail = ({ params }:any) => {
 
          
           <div className="mt-2">
-            <span
-              className={`inline-block px-4 py-1 text-sm rounded-full ${
-                product.availabilityStatus === "Low Stock" || "Out of Stock"
-                  ?product.availabilityStatus === "Low Stock"? "bg-yellow-300 text-yellow-800":"bg-red-500 text-white"
-                  : "bg-green-300 text-green-800"
-              }`}
-            >
-              {product.availabilityStatus}
-            </span>
+          <span 
+  className={`inline-block px-4 py-1 text-sm rounded-full ${
+    product.availabilityStatus === "Low Stock"
+      ? "bg-yellow-300 text-yellow-800"
+      : product.availabilityStatus === "Out of Stock"
+      ? "bg-red-500 text-white"
+      : product.availabilityStatus === "In Stock"
+      ? "bg-green-300 text-green-800"
+      : ""
+  }`}
+>
+  {product.availabilityStatus}
+</span>
+
           </div>
 
           

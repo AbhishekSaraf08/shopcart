@@ -6,7 +6,7 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
-    'scrollable-container',  // This will safeguard your custom class
+    'scrollable-container', 
   ],
   theme: {
     extend: {
@@ -28,7 +28,7 @@ export default {
     },
     keyframes:{
         movemenu:{
-          '0%': { transform: 'translateX(150px)' },  
+          '0%': { transform: 'translateX(350px)' },  
             '100%': { transform: 'translateX(0px)' }, 
       
         
@@ -44,15 +44,15 @@ export default {
           
         },
         movemenu2:{
-          '100%': { transform: 'translateX(150px)' },  
+          '100%': { transform: 'translateX(400px)' },  
             '0%': { transform: 'translateX(0px)' }, 
       
         
       },
     },
     animation:{
-      movemenu: 'movemenu 1s ease-in-out forwards',
-      movemenu2: 'movemenu2 1s ease-in-out forwards',
+      movemenu: 'movemenu 0.6s ease-in-out forwards',
+      movemenu2: 'movemenu2 0.6s ease-in-out forwards',
       moveRight: 'moveRight 1s ease-in-out infinite',
       movenav: 'movenav 0.9s ease-in-out forwards',
     }

@@ -7,13 +7,14 @@ import { Brands } from './Brands'
 import Cards from './Cards'
 import Bcards from './Bcards'
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
-
+import { useRouter } from 'next/navigation'
 
 interface IHomePage{
   
 }
 
 export const HomePage = () => {
+   const router = useRouter()
   return (
     <div className="   scroll-smooth w-full md:w-[90%]  justify-center flex  mt-6 gap-6 overflow-hidden flex-col  ">
     <Banner/>
@@ -25,7 +26,9 @@ export const HomePage = () => {
     <h1 className="w-full text-2xl font-exo_2  font-bold">
           Electronics
         </h1>
-        <button className='   rounded-full hover:scale-95 duration-300 text-teal-500 text-2xl mr-2 hover:text-teal-700 font-geist'><FaRegArrowAltCircleRight className='animate-moveRight'/></button>
+        
+        <button onClick={()=>router.push(`/products/?category=laptops`)} className='rounded-full hover:scale-95 duration-300 text-teal-500 text-2xl mr-2 hover:text-teal-700 font-geist'><FaRegArrowAltCircleRight className='animate-moveRight'/></button>
+        
         </div>
     <hr className=" bg-teal-600  mt-1 bg-opacity-60 h-0.5" />
 
@@ -40,7 +43,7 @@ export const HomePage = () => {
     <h1 className="w-full text-2xl  font-exo_2 font-bold">
           Groceries
         </h1>
-        <button className='   rounded-full hover:scale-95 duration-300 text-teal-500 hover:text-teal-400 text-2xl mr-2 font-geist'><FaRegArrowAltCircleRight className='animate-moveRight'/></button>
+        <button  onClick={()=>router.push(`/products/?category=groceries`)} className='rounded-full hover:scale-95 duration-300 text-teal-500 hover:text-teal-400 text-2xl mr-2 font-geist'><FaRegArrowAltCircleRight className='animate-moveRight'/></button>
         </div>
    <hr className=" bg-teal-600  mt-1 bg-opacity-60 h-0.5" />
 
@@ -57,7 +60,7 @@ export const HomePage = () => {
     <h1 className="w-full text-2xl  font-exo_2 font-bold">
           Motorcycle
         </h1>
-        <button className='   rounded-full hover:scale-95 duration-300 text-teal-500 hover:text-teal-400 text-2xl mr-2 font-geist'><FaRegArrowAltCircleRight className='animate-moveRight'/></button>
+        <button  onClick={()=>router.push(`/products/?category=motorcycle`)} className='rounded-full hover:scale-95 duration-300 text-teal-500 hover:text-teal-400 text-2xl mr-2 font-geist'><FaRegArrowAltCircleRight className='animate-moveRight'/></button>
         </div>
    <hr className=" bg-teal-600  mt-1 bg-opacity-60 h-0.5" />
 
