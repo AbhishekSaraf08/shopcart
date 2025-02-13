@@ -1,10 +1,12 @@
-"use client";
+"use client"
 import React, { useState } from 'react'
 import Products from '@/components/Home/Products';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 const page = () => {
     let categories= ["all","beauty","fragrances","furniture","groceries","home-decoration","kitchen-accessories","laptops","mens-shirts","mens-shoes","mens-watches","mobile-accessories","motorcycle","skin-care","smartphones","sports-accessories","sunglasses","tablets","tops","vehicle","womens-bags","womens-dresses","womens-jewellery","womens-shoes","womens-watches"]
-      const searchParams=useSearchParams();
+     
+    const searchParams=useSearchParams();
       const category:any=searchParams.get("category");
       const sortBy:any=searchParams.get("sortBy");
       const discount:any=searchParams.get("dis");
@@ -38,8 +40,6 @@ const page = () => {
     let availvalues=["In Stock" ,"Low Stock" , "Out of Stock"];
   
       const [selectedAvailabilities, setSelectedAvailabilities] = useState<string[]>([]);
-
-      
       const handleAvailabilityChange = (value: string) => {
         setSelectedAvailabilities((prevSelected) =>
           prevSelected.includes(value)
@@ -48,9 +48,10 @@ const page = () => {
         );
       };
     return (
+      
     <div className='flex w-full '>
+      
         <div className='w-[25%] shadow-xl border-teal-600 rounded-r-md  md:w-[15%]  p-2   flex-col  border border-l-0  flex gap-2  mt-20 '>
-          
           <div>
             <label  htmlFor='category' className='font-geist text-sm'>Category</label>
              
@@ -116,11 +117,17 @@ const page = () => {
 
                   </div>  
               </div>
+              
               <div className=" mt-20 w-[75%]  md:w-[85%]   flex  flex-wrap  h-full  justify-evenly md:justify-evenly lg:justify-start  md:ml-0  lg:ml-5    items-start  gap-5">
+             
             <Products category={category === "all" ? undefined : category} sortBy={sortBy?sortBy:"title"} discount={discount} availability={selectedAvailabilities}  />
+            
      
         </div>
+        
         </div>
+        
+        
         
   )
 }
