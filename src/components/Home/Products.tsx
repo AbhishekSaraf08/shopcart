@@ -1,9 +1,12 @@
-"use client";
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FcRating } from "react-icons/fc";
 import Image from "next/image";
 import useProducts from "../Common/useProducts";
+import { IoMdAdd } from "react-icons/io";
+import { GrSubtract } from "react-icons/gr";
+
 interface IProducts {
   category ?: any;
   searchValue?: any;
@@ -14,8 +17,14 @@ interface IProducts {
 }
 const Products = ({ category, searchValue ,sortBy  ,discount ,availability }: IProducts) => {
  
-  const { products, loading, error } = useProducts();
+  const { products, loading, error ,cart ,  handleAddToCart ,handleRemoveFromCart } = useProducts();
   
+ 
+  useEffect(()=>{
+    console.log("updated");
+   console.log(cart);
+  },[cart])
+
   let upproducts=products;
   if (searchValue) {
     upproducts = products.filter((item: any) =>
@@ -45,6 +54,10 @@ if (availability?.length) {
 }
 
 
+
+
+
+
  if (sortBy === "title") {
   upproducts.sort((a, b) => a.title.localeCompare(b.title)); // Sort by title A-Z
 } else if (sortBy === "rating") {
@@ -55,7 +68,6 @@ if (availability?.length) {
   upproducts.sort((a, b) => b.price - a.price); // Sort by price high to low
 }
  
-
   if (loading) {
     return (
       <div role="status" className="flex h-full w-full justify-center items-center">
@@ -84,13 +96,9 @@ if (availability?.length) {
      if(upproducts.length==0){
      return(<div className="flex justify-center items-center w-full h-screen font-geist text-red-500 text-xl md:text-3xl"> No Products Available</div>)
     }
-
-
-  
   return (
     <>
       {upproducts.map((item: any) => (
-        // item.category === category.category &&
         <div
           key={item.id}
           className="   max-w-[42%]  md:max-w-48  max-h-[10%] rounded-lg     lg:h-[15%]  flex  justify-between flex-col "
@@ -122,9 +130,18 @@ if (availability?.length) {
               <p className="font-geist text-lg">${item.price}</p>
             </div>
           </Link>
-          <button className="   text-white  font-exo_2     font-bold  hover:bg-teal-400 bg-teal-500 bg-opacity-70  transition-all duration-300  shadow-lg rounded-md hover:scale-105  focus:ring-2 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800   px-3 py-2 text-center  mb-1">
+
+
+        {cart[item.id] === undefined || cart[item.id] === 0  ?
+          <button onClick={()=>handleAddToCart(item.id)} className=" text-white  font-exo_2     font-bold  hover:bg-teal-400 bg-teal-500 bg-opacity-70  transition-all duration-300  shadow-lg rounded-md hover:scale-105  focus:ring-2 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800   px-3 py-2 text-center  mb-1">
             Add to Cart
-          </button>
+          </button>:
+          <div className="flex justify-between items-center py-1">
+          <button  onClick={()=>handleRemoveFromCart(item.id)} className="p-1 text-center text-teal-600 bg-slate-200 mb-1 transition-all duration-100 shadow-lg hover:scale-105 rounded-md  hover:focus:ring-2 focus:outline-none  focus:ring-teal-300 dark:focus:ring-teal-800"> <GrSubtract className="size-6"/> </button>
+          <span className="font-exo_2 text-center font-extrabold text-teal-500">{cart[item.id]}</span>
+          <button onClick={()=>handleAddToCart(item.id)} className="p-1 text-center text-teal-600 bg-slate-200 mb-1 transition-all duration-100 shadow-lg hover:scale-105 rounded-md  hover:focus:ring-2 focus:outline-nonefocus:ring-teal-300 dark:focus:ring-teal-800"> <IoMdAdd className="size-6"/>  </button>
+        </div>
+}
         </div>
       ))}
     </>

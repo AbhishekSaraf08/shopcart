@@ -1,4 +1,4 @@
-  "use client";
+  
   import { AppAssests } from "@/constants/Assests";
   import { FaBars } from "react-icons/fa6";
   import Image from "next/image";
@@ -11,8 +11,8 @@
   import { FaChevronDown } from "react-icons/fa";
   import { FaChevronUp } from "react-icons/fa";
 import SearchItems from "../Common/SearchItems";
-import Products from "../Home/Products";
 import { useRouter } from "next/navigation";
+ import useProducts from "../Common/useProducts";
 
   export default function NavBar() {
     const [Sidebar, setSidebar] = useState(false);
@@ -26,7 +26,7 @@ import { useRouter } from "next/navigation";
     };
 
     const [searchValue, setSearchValue] = useState("");
-    
+    const {cartcount}=useProducts();
     const categoryRef = useRef(null);
     const searchRef = useRef<any>(null);
     useEffect(() => {
@@ -38,10 +38,11 @@ import { useRouter } from "next/navigation";
         {
           setIsSearch(false);
         }
+
       };
 
       document.addEventListener("mousedown", handleClickOutside);
-
+   
       return () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
@@ -65,7 +66,7 @@ import { useRouter } from "next/navigation";
     }, []);
 
     const [isSearch, setIsSearch] = useState(false);
-    const [searchButton,setSearchButton] = useState(false);
+
 
     let cdata = [
       { label: "Cloths", image: AppAssests.cloth, count: "20", status: "Available" },
@@ -116,7 +117,7 @@ const router=useRouter()
             <form  onSubmit={(e)=>{ e.preventDefault();  setIsSearch(false); searchValue?router.push(`/search/${searchValue}`):""}}className="md:h-full  flex items-center w-full">
             <input type="text" onChange={(e)=>setSearchValue(e.target.value)} role="search" onClick={()=>setIsSearch(true)} placeholder="Search..." className="h-[30%]  text-xs md:text-sm font-light  p-1  lg:p-4  rounded-lg  lg:font-mono lg:h-[60%] sm:w-full sm:h-[40%]   bg-opacity-50 px-2 lg:py-1 sm:py-1 md:py-0 border  resize-none bg-slate-200  overflow-hidden outline-none"></input>
             </form>
-            <IoSearchOutline onClick={()=>{setSearchButton(true); 
+            <IoSearchOutline onClick={()=>{ 
               searchValue?router.push(`/search/${searchValue}`):""
             }} className="absolute right-[5%] lg:right-[6%] text-white  cursor-pointer  h-5 p-1 w-5 lg:h-6 lg:w-6 rounded-full bg-teal-500    shadow-lg" />
             
@@ -132,8 +133,9 @@ const router=useRouter()
               </div>
             </Link>
             <Link href={"/cart"}>
-              <button className="flex gap-1 size-30 justify-center items-center">
-                <IoCartOutline className="size-6" />
+              <button className="flex gap-1  relative size-30 justify-center items-center">
+                <span  className="bg-red-500 px-0.5 left-5 top-0  text-xs absolute rounded-full">{cartcount}</span>
+                <IoCartOutline className="size-6 " />
                 Cart
               </button>
             </Link>

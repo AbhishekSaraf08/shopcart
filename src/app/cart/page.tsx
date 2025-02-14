@@ -1,11 +1,16 @@
-import React from 'react'
-
+"use client"
+import React, { useEffect, useState } from 'react'
+import useProducts from '@/components/Common/useProducts'
  const Cart = () => {
+  const {products,cart , handleAddToCart ,handleRemoveFromCart}=useProducts();
+  
   return (
     <div className="container mx-auto px-4 mt-16 h-screen py-6">
     <h1 className="text-3xl font-semibold mb-6 text-teal-600 font-exo_2">Shopping Cart</h1>
     <div className="flex flex-col lg:flex-row gap-6">
       <div className="flex-1 space-y-4">
+
+
         <div className="flex flex-col sm:flex-row items-center justify-between p-4 bg-white rounded-lg shadow-md">
           <div className="flex sm:flex-row  items-center gap-4">
             <img
@@ -31,9 +36,6 @@ import React from 'react'
   
   <p className="text-xl font-semibold text-right flex-shrink-0">$59.98</p>
 </div>
-
-
-        
           <button className="text-red-500 hover:text-red-700 mt-4 sm:mt-0">
             Remove
           </button>
