@@ -11,6 +11,7 @@ export class AppAssests{
     static grocery=require(`../../public/grocery.jpg`)
     static homedeco=require(`../../public/homedeco.jpg`)
     static laptop=require(`../../public/laptop.jpg`)
+    static salon=require(`../../public/salon.png`)
 //brands
     static chanel=require(`../../public/chanel.jpg`)
     static puma=require(`../../public/puma.jpg`)

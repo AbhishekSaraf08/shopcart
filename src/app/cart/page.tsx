@@ -1,8 +1,8 @@
 "use client"
-import React, { useEffect, useState } from 'react'
-import useProducts from '@/components/Common/useProducts'
+import React from 'react'
+
  const Cart = () => {
-  const {products,cart , handleAddToCart ,handleRemoveFromCart}=useProducts();
+  
   
   return (
     <div className="container mx-auto px-4 mt-16 h-screen py-6">

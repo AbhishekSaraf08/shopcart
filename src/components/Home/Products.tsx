@@ -6,6 +6,7 @@ import Image from "next/image";
 import useProducts from "../Common/useProducts";
 import { IoMdAdd } from "react-icons/io";
 import { GrSubtract } from "react-icons/gr";
+import useCart from "../Common/useCart";
 
 interface IProducts {
   category ?: any;
@@ -17,13 +18,13 @@ interface IProducts {
 }
 const Products = ({ category, searchValue ,sortBy  ,discount ,availability }: IProducts) => {
  
-  const { products, loading, error ,cart ,  handleAddToCart ,handleRemoveFromCart } = useProducts();
-  
+  const { products, loading, error  } = useProducts();
+  const { cart , cartcount,handleAddToCart ,handleRemoveFromCart } = useCart();
  
   useEffect(()=>{
     console.log("updated");
-   console.log(cart);
-  },[cart])
+   console.log(cartcount);
+  },[cartcount])
 
   let upproducts=products;
   if (searchValue) {
@@ -52,11 +53,6 @@ if (availability?.length) {
     availability.includes(item.availabilityStatus)
   );
 }
-
-
-
-
-
 
  if (sortBy === "title") {
   upproducts.sort((a, b) => a.title.localeCompare(b.title)); // Sort by title A-Z

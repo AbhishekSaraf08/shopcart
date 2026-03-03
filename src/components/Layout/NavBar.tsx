@@ -1,4 +1,4 @@
-  
+
   import { AppAssests } from "@/constants/Assests";
   import { FaBars } from "react-icons/fa6";
   import Image from "next/image";
@@ -12,9 +12,12 @@
   import { FaChevronUp } from "react-icons/fa";
 import SearchItems from "../Common/SearchItems";
 import { useRouter } from "next/navigation";
- import useProducts from "../Common/useProducts";
+ import useCart from "../Common/useCart";
+
 
   export default function NavBar() {
+    const {cartcount,cart}=useCart();
+    
     const [Sidebar, setSidebar] = useState(false);
     const toggleSidebar = () => {
       setSidebar((prev) => !prev);
@@ -24,9 +27,14 @@ import { useRouter } from "next/navigation";
     const toggleCategory = () => {
       setCategory((prev) => !prev);
     };
-
+ useEffect(()=>{
+  console.log(cartcount);
+  console.log("new",cart);
+  
+ 
+ },[cartcount,cart])
     const [searchValue, setSearchValue] = useState("");
-    const {cartcount}=useProducts();
+    
     const categoryRef = useRef(null);
     const searchRef = useRef<any>(null);
     useEffect(() => {

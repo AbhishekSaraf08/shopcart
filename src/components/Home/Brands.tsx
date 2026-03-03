@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { AppAssests } from "@/constants/Assests";
 import Image from "next/image";
@@ -18,6 +19,7 @@ export const Brands = () => {
     {title:"Samsung",image:AppAssests.samsung},
     {title:"Chanel",image:AppAssests.chanel},
   ];
+  
 
   return (
     <div className=" w-full flex flex-col ">
@@ -30,7 +32,7 @@ export const Brands = () => {
           {brands.map((value: any, index: any) => (
             <div className=" w-[48%] sm:w-[30%]  cursor-pointer h-[40%]   lg:h-full lg:w-[16%] " key={index}>
               <div
-                key={index}
+                key={index} 
                 className="  hover:scale-95  hover:bg-slate-300 duration-300  rounded-xl px-1  py-1   flex  flex-row   justify-evenly  gap-2  items-center  min-h-full md:h-12 md:w-30  min--w-20  lg:h-full lg:w-full bg-slate-300 bg-opacity-50  "
               >
                <div className=" transition-all duration-700 h-full  max-w-10 max-h-11 md:max-w-10 md:max-h-14  lg:max-w-10 lg:h-[90%]  rounded-full  bg-white">

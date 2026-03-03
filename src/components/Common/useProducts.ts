@@ -5,8 +5,8 @@ const useProducts = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
-  const [cart, setCart] = useState<{ [key: string]: number }>({});
-   const [cartcount,setCartCount] =useState(Object.keys(cart).length);
+
+  
   useEffect(() => {
     setLoading(true);
     const url =
@@ -23,38 +23,9 @@ const useProducts = () => {
       });
   }, []);
 
-  const handleAddToCart = (itemId: string) => {
-    setCart((prevCart) => {
-      const currentCount = prevCart[itemId]|| 0;
-      if (currentCount < products.find((item) => item.id === itemId)?.stock) {
-        
-        return { ...prevCart, [itemId]: currentCount + 1 }; 
-      }
-      return prevCart;
-    });
-      setCartCount(Object.keys(cart).length+1)
-    console.log(cartcount);
-  };
-  
-  const handleRemoveFromCart = (itemId: string) => {
-    setCart((prevCart) => {
-      const currentCount = prevCart[itemId];
-      if (currentCount > 1) {
-        return { ...prevCart, [itemId]: currentCount - 1 };
-      } else {
-        const newCart = { ...prevCart };
-        delete newCart[itemId]; 
-       
-        return newCart;
-    }}
-  );
-  setCartCount(Object.keys(cart).length-1)
-    
-    console.log(cartcount);
-  };
-  
 
-  return { products, loading, error ,cart ,cartcount,handleAddToCart,handleRemoveFromCart };
+
+  return { products, loading, error  };
 };
 
 export default useProducts;

@@ -14,6 +14,8 @@ interface IHomePage{
 
 export const HomePage = () => {
    const router = useRouter()
+  
+ 
   return (
     <div className="   scroll-smooth w-full md:w-[90%]  justify-center flex  mt-6 gap-6 overflow-hidden flex-col  ">
     <Banner/>
@@ -23,7 +25,7 @@ export const HomePage = () => {
     <div className='flex flex-col p-3'>
     <div className='flex justify-center '>
     <h1 className="w-full text-2xl font-exo_2  font-bold">
-          Electronics
+         Electronics
         </h1>
         <button onClick={()=>router.push(`/products/?category=laptops`)} className='rounded-full hover:scale-95 duration-300 text-teal-500 text-2xl mr-2 hover:text-teal-700 font-geist'><FaRegArrowAltCircleRight className='animate-moveRight'/></button>
         </div>
