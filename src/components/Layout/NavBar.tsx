@@ -24,9 +24,29 @@ import { useRouter } from "next/navigation";
     };
     
     const [category, setCategory] = useState(false);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
     const toggleCategory = () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
       setCategory((prev) => !prev);
     };
+
+    const handleMouseEnter = () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      setCategory(true);
+    };
+
+    const handleMouseLeave = () => {
+      timeoutRef.current = setTimeout(() => {
+        setCategory(false);
+      }, 150);
+    };
+
+    useEffect(() => {
+      return () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      };
+    }, []);
  useEffect(()=>{
   console.log(cartcount);
   console.log("new",cart);
@@ -95,25 +115,34 @@ const router=useRouter()
             </Link>
           </div>
           <div className="sm:flex flex-row items-center justify-center gap-2 md:gap-3 lg:gap-6 outline-none hidden">
-            <button onClick={toggleCategory}>
-              <div className={`flex flex-row gap-1 justify-center items-center lg:p-2 ${category ? " h-12  bg-[#5aa] bg-contain   shadow-xl  rounded-t-xl " : ""}`}>
-                <span>Categories </span>
-                <div className="transition-all duration-700">
-                  {category ? <FaChevronUp  className="transition-all duration-700"/> : <FaChevronUp  className="transition-all  rotate-180 duration-700"/>}
+            <div
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="flex items-center"
+            >
+              <button onClick={toggleCategory}>
+                <div className={`flex flex-row gap-1 justify-center items-center lg:p-2 ${category ? " h-12  bg-[#5aa] bg-contain   shadow-xl  rounded-t-xl " : ""}`}>
+                  <span>Categories </span>
+                  <div className="transition-all duration-700">
+                    {category ? <FaChevronUp  className="transition-all duration-700"/> : <FaChevronUp  className="transition-all  rotate-180 duration-700"/>}
+                  </div>
                 </div>
-              </div>
-            </button>
+              </button>
 
-            {category && (
               <div
                 ref={categoryRef} 
-                className="absolute rounded-xl  z-10  shadow-xl transition-all duration-700 sm:flex hidden flex-wrap lg:gap-2 lg:h-48 lg:w-[40%] sm:w-[70%] justify-center flex-row p-2 left-[15%] lg:top-12 md:top-10 sm:top-16 bg-[#5aa]   gap-2  " >
+                className={`absolute rounded-xl z-10 shadow-xl transition-all duration-700 ease-in-out sm:flex hidden flex-wrap lg:gap-2 lg:h-48 lg:w-[40%] sm:w-[70%] justify-center flex-row p-2 left-[15%] lg:top-12 md:top-10 sm:top-16 bg-[#5aa] gap-2
+                  ${category 
+                    ? "opacity-100 translate-y-0 scale-100 pointer-events-auto visible" 
+                    : "opacity-0 -translate-y-4 scale-95 pointer-events-none invisible"
+                  }`}
+              >
                 <div className="w-full h-8 border-b-2 border-b-white">
                   <span className="font-geist"> Popular Categories </span>
                 </div>
                 <CategoryItem  cdata={cdata} />
               </div>
-            )}
+            </div>
             <div>
               <Link href={"/products"}>Products</Link>
             </div>
@@ -171,11 +200,15 @@ const router=useRouter()
                   {category ? <FaChevronDown  className="  -rotate-180 transition-all duration-700"/> : <FaChevronDown  className="transition-all  duration-700"/>}
                 </div>
               </button>
-              {category && (
-                <div   className="absolute z-10  duration-700 text-black rounded-xl flex flex-wrap w-[81%] right-9 bg-opacity-70 sm:hidden justify-center flex-row p-1 sm:p-2  top-32 bg-[#5aa] border gap-1">
-                  <CategoryItem   cdata={cdata} />
-                </div>
-              )}
+              <div
+                className={`absolute z-10 duration-700 text-black rounded-xl flex flex-wrap w-[81%] right-9 bg-opacity-70 sm:hidden justify-center flex-row p-1 sm:p-2 top-32 bg-[#5aa] border gap-1 transition-all
+                  ${category
+                    ? "opacity-100 scale-100 pointer-events-auto visible"
+                    : "opacity-0 scale-95 pointer-events-none invisible"
+                  }`}
+              >
+                <CategoryItem   cdata={cdata} />
+              </div>
               <button  onClick={toggleSidebar} className="hover:bg-white  hover:rounded-md  hover:bg-opacity-70 p-2 m-2 w-[80%]">
                 <Link href={"/products"}>Products</Link>
               </button>
